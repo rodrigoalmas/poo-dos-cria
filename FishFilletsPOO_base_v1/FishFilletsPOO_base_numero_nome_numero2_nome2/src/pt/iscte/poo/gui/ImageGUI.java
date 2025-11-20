@@ -222,7 +222,7 @@ public class ImageGUI extends Observed {
      */
     public void go() {
         frame.setVisible(true);
-        System.out.println("Quem tem lebre nao poe a tartaruga pra correr");
+        System.out.println("Devagar se vai a longe mas correndo se vai mais ainda");
     }
 
     /**

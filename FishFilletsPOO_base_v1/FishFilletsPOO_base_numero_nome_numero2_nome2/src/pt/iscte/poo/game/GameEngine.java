@@ -16,13 +16,15 @@ public class GameEngine implements Observer {
 	
 	private Map<String,Room> rooms;
 	private Room currentRoom;
+	private int roomNumber;
 	private int lastTickProcessed = 0;
-	private boolean bigFishSelected = false; // <-- 11/11
+	private boolean bigFishSelected = false;
 	
 	public GameEngine() {
 		rooms = new HashMap<String,Room>();
 		loadGame();
-		currentRoom = rooms.get("room0.txt");
+		roomNumber = 0;
+		currentRoom = rooms.get("room" + roomNumber +".txt");
 		updateGUI();		
 		SmallFish.getInstance().setRoom(currentRoom);
 		BigFish.getInstance().setRoom(currentRoom);

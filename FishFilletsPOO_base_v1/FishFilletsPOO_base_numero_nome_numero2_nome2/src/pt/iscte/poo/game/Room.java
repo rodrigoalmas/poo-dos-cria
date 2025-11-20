@@ -71,6 +71,14 @@ public class Room {
 		return bigFishStartingPosition;
 	}
 
+	public boolean isHoledWall(Point2D pos) {
+		for (GameObject obj : objects) {
+
+			if (obj.getPosition().equals(pos) && obj instanceof holedWall) 
+				return true;
+		}
+		return false;
+	}
 	public boolean isValid(Point2D pos) {
 
 
@@ -92,7 +100,6 @@ public class Room {
 			int line = 0;
 			while(sc.hasNextLine()) {
 				String l = sc.nextLine();
-				System.out.println(l);
 				for(int col = 0; col < l.length(); col++) {
 					char c = l.charAt(col);
 					GameObject water = new Water(r);

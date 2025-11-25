@@ -23,4 +23,11 @@ public class Water extends GameObject{
         return false;
     } 
 
+	/*
+	@Override
+	public boolean isGravitacional() {
+		return false;
+	}
+	 */
+
 }

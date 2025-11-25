@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import objects.Water;
-import objects.cup;
+import objects.Cup;
 import objects.holedWall;
 import objects.BigFish;
 import objects.GameObject;
@@ -78,6 +78,17 @@ public class Room {
 		}
 		return false;
 	}
+
+	public List<GameObject> getObjectAt(Point2D p) {
+		ArrayList<GameObject> lista = new ArrayList<>();
+		for(GameObject obj : objects) {
+			if(obj.getPosition().equals(p)) {
+				lista.add(obj);
+			}
+		}
+		return lista;
+	}
+
 	public boolean isValid(Point2D pos) {
 
 
@@ -129,7 +140,7 @@ public class Room {
 						
 					}
 					if(c == 'c') {
-						GameObject sh = new cup(r);
+						GameObject sh = new Cup(r);
 						sh.setPosition(new Point2D(col, line));
 						r.addObject(sh);
 						

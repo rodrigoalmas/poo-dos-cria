@@ -21,6 +21,13 @@ public class Wall extends GameObject {
 	@Override
 	public boolean isSolid() {
         return true;
-    } 
+    }
+
+	/*
+	@Override
+	public boolean isGravitacional() {
+		return false;
+	}
+	 */
 
 }

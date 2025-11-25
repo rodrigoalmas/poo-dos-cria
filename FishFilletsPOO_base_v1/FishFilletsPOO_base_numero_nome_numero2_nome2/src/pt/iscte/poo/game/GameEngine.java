@@ -7,6 +7,8 @@ import java.util.Map;
 
 import objects.SmallFish;
 import objects.BigFish;
+import objects.GameObject;
+import objects.GravitationalGameObject;
 import pt.iscte.poo.gui.ImageGUI;
 import pt.iscte.poo.observer.Observed;
 import pt.iscte.poo.observer.Observer;
@@ -65,6 +67,14 @@ public class GameEngine implements Observer {
 		int t = ImageGUI.getInstance().getTicks();
 		while (lastTickProcessed < t) {
 			processTick();
+			for(GameObject obj : currentRoom.getObjects()) {
+			if(obj instanceof GravitationalGameObject gravObj) {
+                gravObj.fall();
+				System.out.println("A");
+            }
+
+		}
+
 		}
 		ImageGUI.getInstance().update();
 	}
@@ -77,6 +87,7 @@ public class GameEngine implements Observer {
 		if(currentRoom!=null) {
 			ImageGUI.getInstance().clearImages();
 			ImageGUI.getInstance().addImages(currentRoom.getObjects());
+			
 		}
 	}
 

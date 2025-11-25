@@ -41,5 +41,6 @@ public abstract class GameObject implements ImageTile{
 	}
 
     public abstract boolean isSolid();
+	//public abstract boolean isGravitacional();
 	
 }

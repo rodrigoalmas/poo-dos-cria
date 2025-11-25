@@ -21,6 +21,8 @@ public class holedWall extends GameObject {
 	@Override
 	public boolean isSolid() {
         return false;
-    } 
+    }
+	
+	
 
 }

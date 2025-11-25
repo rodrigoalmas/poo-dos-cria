@@ -2,29 +2,26 @@ package objects;
 
 import pt.iscte.poo.game.Room;
 
-public class Water extends GameObject{
+public class anchor extends Interact {
 
-	public Water(Room room) {
+	public anchor(Room room) {
 		super(room);
 	}
 
 	@Override
 	public String getName() {
-		return "water";
+		return "anchor";
 	}
 
 	@Override
 	public int getLayer() {
-		return 0;
+		return 1;
 	}
-	
+
 	@Override
 	public boolean isSolid() {
-        return false;
+        return true;
     }
-	
-	public boolean isInteract(){
-        return false;
-    }
+    
 
 }

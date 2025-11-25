@@ -33,7 +33,8 @@ public class SmallFish extends GameCharacter {
 	@Override
 	public boolean isSolid() {
         return true;
-    } 
+    }
+	
 	
 
 }

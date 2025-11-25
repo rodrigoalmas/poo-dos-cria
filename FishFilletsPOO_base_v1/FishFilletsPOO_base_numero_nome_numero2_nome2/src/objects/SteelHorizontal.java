@@ -21,6 +21,7 @@ public class SteelHorizontal extends GameObject {
 	@Override
 	public boolean isSolid() {
         return true;
-    } 
+    }
+	
 
 }

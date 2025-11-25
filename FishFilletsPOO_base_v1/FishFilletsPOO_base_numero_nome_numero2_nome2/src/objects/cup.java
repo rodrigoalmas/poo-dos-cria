@@ -2,7 +2,7 @@ package objects;
 
 import pt.iscte.poo.game.Room;
 
-public class cup extends GameObject {
+public class cup extends Interact {
 
 	public cup(Room room) {
 		super(room);
@@ -21,6 +21,8 @@ public class cup extends GameObject {
 	@Override
 	public boolean isSolid() {
         return true;
-    } 
+    }
+	
+	
 
 }

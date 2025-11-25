@@ -16,6 +16,7 @@ import objects.SteelHorizontal;
 
 
 import pt.iscte.poo.utils.Point2D;
+import pt.iscte.poo.utils.Vector2D;
 
 public class Room {
 	
@@ -91,6 +92,8 @@ public class Room {
 	
 		return true;
 	}
+
+
 	
 	public static Room readRoom(File f, GameEngine engine) {
 		Room r = new Room();

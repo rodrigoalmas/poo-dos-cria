@@ -26,6 +26,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import objects.GravitationalGameObject;
 
 import pt.iscte.poo.observer.Observed;
 import pt.iscte.poo.utils.Point2D;

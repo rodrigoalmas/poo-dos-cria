@@ -27,7 +27,6 @@ public abstract class GameCharacter extends GameObject {
 			this.direction = "left";
 		if(dir.equals(right))
 			this.direction = "right";
-
 	}
 
 	@Override

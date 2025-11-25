@@ -2,16 +2,16 @@ package objects;
 
 import pt.iscte.poo.game.Room;
 
-public class Wall extends GameObject {
+public class SteelVertical extends GameObject  {
 
-	public Wall(Room room) {
+	public SteelVertical(Room room) {
 		super(room);
 	}
 
 	@Override
 	public String getName() {
-		return "wall";
-	}	
+		return "steelVertical";
+	}
 
 	@Override
 	public int getLayer() {
@@ -21,13 +21,6 @@ public class Wall extends GameObject {
 	@Override
 	public boolean isSolid() {
         return true;
-    }
-
-	/*
-	@Override
-	public boolean isGravitacional() {
-		return false;
-	}
-	 */
+    } 
 
 }

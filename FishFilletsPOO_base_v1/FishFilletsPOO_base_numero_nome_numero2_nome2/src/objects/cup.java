@@ -21,7 +21,7 @@ public class cup extends Interact {
 	@Override
 	public boolean isSolid() {
         return true;
-    }
+    } 
 	
 	
 

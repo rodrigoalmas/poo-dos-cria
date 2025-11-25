@@ -14,8 +14,8 @@ import objects.Interact;
 import objects.SmallFish;
 import objects.Wall;
 import objects.SteelHorizontal;
-
-
+import objects.SteelVertical;
+import objects.stone;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
 
@@ -81,6 +81,26 @@ public class Room {
 		}
 		return false;
 	}
+
+	public ArrayList<GameObject> getObjectAt(Point2D p) {
+		ArrayList<GameObject> lista = new ArrayList<>();
+		for(GameObject obj : objects) {
+			if(obj.getPosition().equals(p)) {
+				lista.add(obj);
+			}
+		}
+		return lista;
+	}
+
+	public Interact getInteractObjectAt(Point2D pos) {
+		for(GameObject obj : getObjectAt(pos)) {
+			if(obj instanceof Interact interact) {
+				return interact;
+			}
+		}
+		return null;
+	}
+
 	public boolean isValid(Point2D pos) {
 
 
@@ -156,6 +176,18 @@ public class Room {
 						sh.setPosition(new Point2D(col, line));
 						r.addObject(sh);
 						
+					}
+					if(c == 'V') {
+						GameObject sv = new SteelVertical(r);
+						sv.setPosition(new Point2D(col, line));
+						r.addObject(sv);
+						
+					}
+
+					if(c == 'R') {
+						GameObject rock = new stone(r);
+						rock.setPosition(new Point2D(col, line));
+						r.addObject(rock);
 					}
 
 

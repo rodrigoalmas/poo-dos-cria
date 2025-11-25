@@ -10,6 +10,7 @@ import objects.cup;
 import objects.holedWall;
 import objects.BigFish;
 import objects.GameObject;
+import objects.Interact;
 import objects.SmallFish;
 import objects.Wall;
 import objects.SteelHorizontal;
@@ -91,6 +92,18 @@ public class Room {
 
 	
 		return true;
+	}
+
+	public void Moveble(Point2D pos, Vector2D dir){
+		for (GameObject obj : objects) {
+			if (obj.getPosition().equals(pos) && obj instanceof Interact){
+				Point2D currentPosition = obj.getPosition();
+				Point2D newPosition = currentPosition.plus(dir);
+				if(isValid(newPosition))
+					obj.setPosition(newPosition);
+			}	
+		}	
+		
 	}
 
 

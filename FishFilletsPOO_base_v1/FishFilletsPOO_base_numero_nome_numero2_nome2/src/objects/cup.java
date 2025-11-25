@@ -1,8 +1,6 @@
 package objects;
 
-import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.game.Room;
-import pt.iscte.poo.utils.Vector2D;
 
 public class Cup extends GravitationalGameObject {
 
@@ -22,7 +20,7 @@ public class Cup extends GravitationalGameObject {
 
 	@Override
 	public boolean isSolid() {
-        return false;
+        return true;
     } 
 	/*
 	@Override

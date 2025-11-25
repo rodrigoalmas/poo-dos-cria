@@ -2,15 +2,15 @@ package objects;
 
 import pt.iscte.poo.game.Room;
 
-public class holedWall extends GameObject {
+public class anchor extends Interact {
 
-	public holedWall(Room room) {
+	public anchor(Room room) {
 		super(room);
 	}
 
 	@Override
 	public String getName() {
-		return "holedWall";
+		return "anchor";
 	}
 
 	@Override
@@ -20,9 +20,8 @@ public class holedWall extends GameObject {
 
 	@Override
 	public boolean isSolid() {
-        return false;
+        return true;
     }
-	
-	
+    
 
 }

@@ -21,7 +21,11 @@ public class Water extends GameObject{
 	@Override
 	public boolean isSolid() {
         return false;
-    } 
+    }
+	
+	public boolean isInteract(){
+        return false;
+    }
 
 	/*
 	@Override

@@ -10,11 +10,14 @@ import objects.Cup;
 import objects.holedWall;
 import objects.BigFish;
 import objects.GameObject;
+import objects.Interact;
 import objects.SmallFish;
 import objects.Wall;
 import objects.SteelHorizontal;
 import objects.SteelVertical;
+import objects.Stone;
 import pt.iscte.poo.utils.Point2D;
+import pt.iscte.poo.utils.Vector2D;
 
 public class Room {
 	
@@ -79,7 +82,7 @@ public class Room {
 		return false;
 	}
 
-	public List<GameObject> getObjectAt(Point2D p) {
+	public ArrayList<GameObject> getObjectAt(Point2D p) {
 		ArrayList<GameObject> lista = new ArrayList<>();
 		for(GameObject obj : objects) {
 			if(obj.getPosition().equals(p)) {
@@ -87,6 +90,15 @@ public class Room {
 			}
 		}
 		return lista;
+	}
+
+	public Interact getInteractObjectAt(Point2D pos) {
+		for(GameObject obj : getObjectAt(pos)) {
+			if(obj instanceof Interact interact) {
+				return interact;
+			}
+		}
+		return null;
 	}
 
 	public boolean isValid(Point2D pos) {
@@ -101,6 +113,8 @@ public class Room {
 	
 		return true;
 	}
+
+
 	
 	public static Room readRoom(File f, GameEngine engine) {
 		Room r = new Room();
@@ -156,6 +170,12 @@ public class Room {
 						sv.setPosition(new Point2D(col, line));
 						r.addObject(sv);
 						
+					}
+
+					if(c == 'R') {
+						GameObject rock = new Stone(r);
+						rock.setPosition(new Point2D(col, line));
+						r.addObject(rock);
 					}
 
 

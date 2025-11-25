@@ -68,13 +68,10 @@ public class GameEngine implements Observer {
 		while (lastTickProcessed < t) {
 			processTick();
 			for(GameObject obj : currentRoom.getObjects()) {
-			if(obj instanceof GravitationalGameObject gravObj) {
-                gravObj.fall();
-				System.out.println("A");
-            }
-
-		}
-
+				if(obj instanceof GravitationalGameObject gravObj) {
+					gravObj.fall();
+				}
+			}
 		}
 		ImageGUI.getInstance().update();
 	}

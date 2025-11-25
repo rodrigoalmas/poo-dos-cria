@@ -34,5 +34,9 @@ public class BigFish extends GameCharacter {
 	public boolean isSolid() {
         return true;
     }
+
+	public boolean isInteract(){
+        return false;
+    }
 	
 }

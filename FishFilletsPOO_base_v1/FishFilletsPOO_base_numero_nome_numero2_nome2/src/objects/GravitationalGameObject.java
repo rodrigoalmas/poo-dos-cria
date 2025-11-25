@@ -4,7 +4,7 @@ import pt.iscte.poo.game.Room;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
 
-public abstract class GravitationalGameObject extends GameObject{
+public abstract class GravitationalGameObject extends Interact{
     public GravitationalGameObject(Room room) {
         super(room);
     }
@@ -20,7 +20,6 @@ public abstract class GravitationalGameObject extends GameObject{
 		for(GameObject obj : getRoom().getObjectAt(newPosition)) {
 			if(obj instanceof Water && getRoom().getObjectAt(newPosition).size() == 1) {
 				setPosition(newPosition);
-				System.out.println("B");
 			}
 		}
 	}

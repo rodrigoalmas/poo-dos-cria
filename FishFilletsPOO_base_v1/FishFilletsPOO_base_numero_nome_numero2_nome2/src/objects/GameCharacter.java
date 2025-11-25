@@ -1,5 +1,6 @@
 package objects;
 
+import java.util.ArrayList;
 import pt.iscte.poo.game.Room;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
@@ -17,7 +18,18 @@ public abstract class GameCharacter extends GameObject {
 
 		Point2D currentPosition = getPosition();
 		Point2D newPosition = currentPosition.plus(dir);
+		ArrayList<GameObject> lista = getRoom().getObjectAt(newPosition);
 		if(!(this instanceof BigFish && getRoom().isHoledWall(newPosition))) {
+			Interact interactObject = getRoom().getInteractObjectAt(newPosition);
+			if(interactObject != null) {
+				if(interactObject.canMove(newPosition.plus(dir))) {
+					interactObject.move(dir);
+					if(getRoom().isValid(newPosition)){
+						setPosition(newPosition);
+					}
+				}
+				return;
+			}
 			if(getRoom().isValid(newPosition)){
 				setPosition(newPosition);
 			}

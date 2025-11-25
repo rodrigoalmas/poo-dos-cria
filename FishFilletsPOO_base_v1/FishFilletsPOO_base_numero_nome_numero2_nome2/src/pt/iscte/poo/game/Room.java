@@ -13,8 +13,7 @@ import objects.GameObject;
 import objects.SmallFish;
 import objects.Wall;
 import objects.SteelHorizontal;
-
-
+import objects.SteelVertical;
 import pt.iscte.poo.utils.Point2D;
 
 public class Room {
@@ -139,6 +138,12 @@ public class Room {
 						GameObject sh = new holedWall(r);
 						sh.setPosition(new Point2D(col, line));
 						r.addObject(sh);
+						
+					}
+					if(c == 'V') {
+						GameObject sv = new SteelVertical(r);
+						sv.setPosition(new Point2D(col, line));
+						r.addObject(sv);
 						
 					}
 

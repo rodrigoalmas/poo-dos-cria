@@ -11,8 +11,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
-// import java.awt.event.MouseEvent;
-// import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,7 +24,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import objects.GravitationalGameObject;
 
 import pt.iscte.poo.observer.Observed;
 import pt.iscte.poo.utils.Point2D;
@@ -223,7 +220,7 @@ public class ImageGUI extends Observed {
      */
     public void go() {
         frame.setVisible(true);
-        System.out.println("Devagar se vai a longe mas correndo se vai mais ainda");
+        System.out.println("Pai não é quem fode, é quem cria");
     }
 
     /**

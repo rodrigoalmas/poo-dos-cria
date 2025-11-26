@@ -8,7 +8,6 @@ import java.util.Map;
 import objects.SmallFish;
 import objects.BigFish;
 import objects.GameObject;
-import objects.GravitationalGameObject;
 import objects.Interact;
 import pt.iscte.poo.gui.ImageGUI;
 import pt.iscte.poo.observer.Observed;

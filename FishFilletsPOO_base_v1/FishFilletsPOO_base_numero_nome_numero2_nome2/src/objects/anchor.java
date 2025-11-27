@@ -15,7 +15,7 @@ public class Anchor extends Interact {
 
 	@Override
 	public int getLayer() {
-		return 5;
+		return 6;
 	}
 
 	@Override

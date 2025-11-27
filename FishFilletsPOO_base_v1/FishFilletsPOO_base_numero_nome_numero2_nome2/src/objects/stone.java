@@ -15,7 +15,7 @@ public class Stone extends GravitationalGameObject {
 
 	@Override
 	public int getLayer() {
-		return 4;
+		return 5;
 	}
 
 	@Override

@@ -46,7 +46,7 @@ public class SmallFish extends GameCharacter {
 
 		Point2D currentPosition = getPosition();
 		Point2D newPosition = currentPosition.plus(dir);
-		if(getRoom().getObjectLayer(newPosition, 1) == null && getRoom().getObjectLayer(newPosition, 4) == null) {
+		if(getRoom().getObjectLayer(newPosition, 1) == null && getRoom().getObjectLayer(newPosition, 5) == null && getRoom().getObjectLayer(newPosition, 6) == null) {
 			getRoom().moveble(newPosition, dir);
 			if(getRoom().isValid(newPosition)){
 				setPosition(newPosition);

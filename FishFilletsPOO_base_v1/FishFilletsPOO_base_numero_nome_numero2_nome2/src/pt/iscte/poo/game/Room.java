@@ -73,15 +73,6 @@ public class Room {
 		return bigFishStartingPosition;
 	}
 
-	public boolean isHoledWall(Point2D pos) {
-		for (GameObject obj : objects) {
-
-			if (obj.getPosition().equals(pos) && obj instanceof holedWall) 
-				return true;
-		}
-		return false;
-	}
-
 	public ArrayList<GameObject> getObjectsAt(Point2D p) {
 		ArrayList<GameObject> lista = new ArrayList<>();
 		for(GameObject obj : objects) {
@@ -102,6 +93,16 @@ public class Room {
 		return null;
 	}
 
+	public GameObject getNonWaterObjectAt(Point2D p) {
+		ArrayList<GameObject> objetos = getObjectsAt(p);
+		for(GameObject obj : objetos) {
+			if(obj.getLayer() != 1) {
+				return obj;
+			}
+		}
+		return null;
+	}
+
 	public Interact getInteractObjectAt(Point2D pos) {
 		for(GameObject obj : getObjectsAt(pos)) {
 			if(obj instanceof Interact interact) {
@@ -115,9 +116,9 @@ public class Room {
 
 
 		for (GameObject obj : objects) {
-
-			if (obj.getPosition().equals(pos) && obj.isSolid()) 
+			if (obj.getPosition().equals(pos) && obj.isSolid())  {
 				return false;
+			}
 		}
 
 	
@@ -125,12 +126,16 @@ public class Room {
 	}
 
 	public void moveble(Point2D pos, Vector2D dir){
+		Point2D newPos = pos.plus(dir);
+		GameObject holedWall = getObjectLayer(newPos,7);
 		for (GameObject obj : objects) {
 			if (obj.getPosition().equals(pos) && obj instanceof Interact){
+				if(obj.getLayer() >= 4 && dir.getY() != 0 && holedWall != null) {
+					return;
+				}
 				Point2D currentPosition = obj.getPosition();
 				Point2D newPosition = currentPosition.plus(dir);
-				if(isValid(newPosition) && !isHoledWall(newPosition))
-					obj.setPosition(newPosition);
+				if(isValid(newPosition)) obj.setPosition(newPosition);
 			}	
 		}	
 		

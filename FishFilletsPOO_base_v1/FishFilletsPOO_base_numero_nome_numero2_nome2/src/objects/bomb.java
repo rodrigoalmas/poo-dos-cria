@@ -15,7 +15,7 @@ public class Bomb extends GravitationalGameObject {
 
 	@Override
 	public int getLayer() {
-		return 6;
+		return 4;
 	}
 
 	@Override

@@ -121,12 +121,12 @@ public class Room {
 		return true;
 	}
 
-	public void Moveble(Point2D pos, Vector2D dir){
+	public void moveble(Point2D pos, Vector2D dir){
 		for (GameObject obj : objects) {
 			if (obj.getPosition().equals(pos) && obj instanceof Interact){
 				Point2D currentPosition = obj.getPosition();
 				Point2D newPosition = currentPosition.plus(dir);
-				if(isValid(newPosition))
+				if(isValid(newPosition) && !isHoledWall(newPosition))
 					obj.setPosition(newPosition);
 			}	
 		}	

@@ -18,7 +18,7 @@ public abstract class GameCharacter extends GameObject {
 		Point2D currentPosition = getPosition();
 		Point2D newPosition = currentPosition.plus(dir);
 		if(!(this instanceof BigFish && getRoom().isHoledWall(newPosition))) {
-			getRoom().Moveble(newPosition, dir);
+			getRoom().moveble(newPosition, dir);
 			if(getRoom().isValid(newPosition)){
 				setPosition(newPosition);
 			}

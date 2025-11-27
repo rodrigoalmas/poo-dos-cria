@@ -2,9 +2,9 @@ package objects;
 
 import pt.iscte.poo.game.Room;
 
-public class trap extends GameObject {
+public class Trap extends GameObject {
 
-	public trap(Room room) {
+	public Trap(Room room) {
 		super(room);
 	}
 

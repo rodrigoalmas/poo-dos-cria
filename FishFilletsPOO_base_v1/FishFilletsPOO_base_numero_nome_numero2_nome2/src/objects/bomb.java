@@ -2,9 +2,9 @@ package objects;
 
 import pt.iscte.poo.game.Room;
 
-public class bomb extends Interact {
+public class Bomb extends GravitationalGameObject {
 
-	public bomb(Room room) {
+	public Bomb(Room room) {
 		super(room);
 	}
 
@@ -22,6 +22,16 @@ public class bomb extends Interact {
 	public boolean isSolid() {
         return true;
     }
+
+	@Override
+	public boolean isHeavy(){
+		return false;
+	} 
+
+	@Override
+	public void fall() {
+		
+	}
 	
 
 

@@ -2,9 +2,9 @@ package objects;
 
 import pt.iscte.poo.game.Room;
 
-public class anchor extends Interact {
+public class Anchor extends Interact {
 
-	public anchor(Room room) {
+	public Anchor(Room room) {
 		super(room);
 	}
 
@@ -22,6 +22,11 @@ public class anchor extends Interact {
 	public boolean isSolid() {
         return true;
     }
+
+	@Override
+	public boolean isHeavy() {
+		return true;
+	}
     
 
 }

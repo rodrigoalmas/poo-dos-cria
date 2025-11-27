@@ -33,5 +33,16 @@ public abstract class GameCharacter extends GameObject {
 	public int getLayer() {
 		return 2;
 	}
+
+	/*
+	public void remove() { //remover peixe da screen
+	}
+	 */
+
+	/*
+	public void kill() { //mata o peixe (remove da tela, adiciona a imagem de morto sangue e faz o pop up?)
+		this.remove
+	}
+	*/
 	
 }

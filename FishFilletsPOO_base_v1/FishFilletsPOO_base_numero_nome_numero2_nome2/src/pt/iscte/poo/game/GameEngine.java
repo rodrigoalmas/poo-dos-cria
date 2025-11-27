@@ -8,7 +8,11 @@ import java.util.Map;
 import objects.SmallFish;
 import objects.BigFish;
 import objects.GameObject;
+<<<<<<< Updated upstream
 import objects.Interact;
+=======
+import objects.GravitationalGameObject;
+>>>>>>> Stashed changes
 import pt.iscte.poo.gui.ImageGUI;
 import pt.iscte.poo.observer.Observed;
 import pt.iscte.poo.observer.Observer;
@@ -68,7 +72,7 @@ public class GameEngine implements Observer {
 		while (lastTickProcessed < t) {
 			processTick();
 			for(GameObject obj : currentRoom.getObjects()) {
-				if(obj instanceof Interact gravObj) {
+				if(obj instanceof GravitationalGameObject gravObj) {
 					gravObj.fall();
 				}
 			}

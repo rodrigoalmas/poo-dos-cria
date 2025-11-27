@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import objects.Water;
-import objects.cup;
+import objects.Cup;
 import objects.holedWall;
 import objects.BigFish;
 import objects.GameObject;
@@ -15,7 +15,7 @@ import objects.SmallFish;
 import objects.Wall;
 import objects.SteelHorizontal;
 import objects.SteelVertical;
-import objects.stone;
+import objects.Stone;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
 
@@ -82,7 +82,7 @@ public class Room {
 		return false;
 	}
 
-	public ArrayList<GameObject> getObjectAt(Point2D p) {
+	public ArrayList<GameObject> getObjectsAt(Point2D p) {
 		ArrayList<GameObject> lista = new ArrayList<>();
 		for(GameObject obj : objects) {
 			if(obj.getPosition().equals(p)) {
@@ -92,8 +92,15 @@ public class Room {
 		return lista;
 	}
 
+	public boolean getObjectAt(ArrayList<GameObject> objetos, String name) {
+		for(GameObject obj : objetos) {
+			if(obj.getName().equalsIgnoreCase(name) ) return true;
+		}
+		return false;
+	}
+
 	public Interact getInteractObjectAt(Point2D pos) {
-		for(GameObject obj : getObjectAt(pos)) {
+		for(GameObject obj : getObjectsAt(pos)) {
 			if(obj instanceof Interact interact) {
 				return interact;
 			}
@@ -166,7 +173,7 @@ public class Room {
 						
 					}
 					if(c == 'c') {
-						GameObject sh = new cup(r);
+						GameObject sh = new Cup(r);
 						sh.setPosition(new Point2D(col, line));
 						r.addObject(sh);
 						
@@ -185,7 +192,7 @@ public class Room {
 					}
 
 					if(c == 'R') {
-						GameObject rock = new stone(r);
+						GameObject rock = new Stone(r);
 						rock.setPosition(new Point2D(col, line));
 						r.addObject(rock);
 					}
@@ -199,11 +206,7 @@ public class Room {
 							col++;
 						}
 						
-					}
-
-					
-					
-					
+					}	
 				}
 				line++;
 			}

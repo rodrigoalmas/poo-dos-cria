@@ -13,6 +13,7 @@ public abstract class Interact extends GameObject{
 		super(position, room);
 	}
 
+	/*
 	public void fall() {
 		Vector2D dir = new Vector2D(0, 1);
 		Point2D currentPosition = getPosition();
@@ -23,6 +24,10 @@ public abstract class Interact extends GameObject{
 			}
 		}
 	}
+	 */	
+	
+
+	public abstract boolean isHeavy();
 
 
 }

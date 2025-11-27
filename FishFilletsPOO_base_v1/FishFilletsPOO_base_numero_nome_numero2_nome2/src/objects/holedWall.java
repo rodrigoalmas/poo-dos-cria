@@ -15,7 +15,7 @@ public class holedWall extends GameObject {
 
 	@Override
 	public int getLayer() {
-		return 1;
+		return 7;
 	}
 
 	@Override

@@ -15,7 +15,7 @@ public class Trap extends GameObject {
 
 	@Override
 	public int getLayer() {
-		return 1;
+		return 8;
 	}
 
 	@Override

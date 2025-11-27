@@ -92,11 +92,13 @@ public class Room {
 		return lista;
 	}
 
-	public boolean getObjectAt(ArrayList<GameObject> objetos, String name) {
+	public GameObject getObjectAt(Point2D p, int layer) {
+		ArrayList<GameObject> objetos = getObjectsAt(p);
 		for(GameObject obj : objetos) {
-			if(obj.getName().equalsIgnoreCase(name) ) return true;
+			if(obj.getLayer() == layer);
+			return obj;
 		}
-		return false;
+		return null;
 	}
 
 	public Interact getInteractObjectAt(Point2D pos) {

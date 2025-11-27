@@ -8,11 +8,8 @@ import java.util.Map;
 import objects.SmallFish;
 import objects.BigFish;
 import objects.GameObject;
-<<<<<<< Updated upstream
-import objects.Interact;
-=======
 import objects.GravitationalGameObject;
->>>>>>> Stashed changes
+import objects.Interact;
 import pt.iscte.poo.gui.ImageGUI;
 import pt.iscte.poo.observer.Observed;
 import pt.iscte.poo.observer.Observer;

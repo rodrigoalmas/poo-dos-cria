@@ -17,7 +17,7 @@ public class Cup extends GravitationalGameObject {
 
 	@Override
 	public int getLayer() {
-		return 1;
+		return 3;
 	}
 
 	@Override

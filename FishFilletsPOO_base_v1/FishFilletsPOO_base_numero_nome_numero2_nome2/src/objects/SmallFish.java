@@ -37,7 +37,7 @@ public class SmallFish extends GameCharacter {
         return true;
     }
 
-	/*
+
 	@Override
 	public void move(Vector2D dir) {
 		Vector2D left = new Vector2D(-1, 0);
@@ -46,18 +46,16 @@ public class SmallFish extends GameCharacter {
 
 		Point2D currentPosition = getPosition();
 		Point2D newPosition = currentPosition.plus(dir);
-
-
-		getRoom().Moveble(newPosition, dir);
-		if(getRoom().isValid(newPosition)){
-			setPosition(newPosition);
+		if(getRoom().getObjectLayer(newPosition, 1) == null && getRoom().getObjectLayer(newPosition, 4) == null) {
+			getRoom().moveble(newPosition, dir);
+			if(getRoom().isValid(newPosition)){
+				setPosition(newPosition);
+			}
 		}
-
-
 		if(dir.equals(left))
 			this.direction = "left";
 		if(dir.equals(right))
 			this.direction = "right";
 	}
-	 */
+	
 }

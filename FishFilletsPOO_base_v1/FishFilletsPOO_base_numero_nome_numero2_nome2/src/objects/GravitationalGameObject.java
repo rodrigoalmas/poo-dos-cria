@@ -21,6 +21,7 @@ public abstract class GravitationalGameObject extends Interact{
 			if(obj instanceof Water && getRoom().getObjectsAt(newPosition).size() == 1) {
 				setPosition(newPosition);
 			}
+			
 		}
 	}
 

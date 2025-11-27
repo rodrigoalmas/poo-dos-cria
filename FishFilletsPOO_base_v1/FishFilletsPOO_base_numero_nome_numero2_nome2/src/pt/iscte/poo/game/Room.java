@@ -92,11 +92,12 @@ public class Room {
 		return lista;
 	}
 
-	public GameObject getObjectAt(Point2D p, int layer) {
+	public GameObject getObjectLayer(Point2D p, int layer) {
 		ArrayList<GameObject> objetos = getObjectsAt(p);
 		for(GameObject obj : objetos) {
-			if(obj.getLayer() == layer);
-			return obj;
+			if(obj.getLayer() == layer) {
+				return obj;
+			}
 		}
 		return null;
 	}

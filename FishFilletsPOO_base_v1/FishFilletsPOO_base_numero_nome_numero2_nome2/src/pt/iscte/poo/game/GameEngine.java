@@ -9,7 +9,6 @@ import objects.SmallFish;
 import objects.BigFish;
 import objects.GameObject;
 import objects.GravitationalGameObject;
-import objects.Interact;
 import pt.iscte.poo.gui.ImageGUI;
 import pt.iscte.poo.observer.Observed;
 import pt.iscte.poo.observer.Observer;
@@ -28,7 +27,7 @@ public class GameEngine implements Observer {
 		loadGame();
 		roomNumber = 0;
 		currentRoom = rooms.get("room" + roomNumber +".txt");
-		updateGUI();		
+		updateGUI();
 		SmallFish.getInstance().setRoom(currentRoom);
 		BigFish.getInstance().setRoom(currentRoom);
 	}
@@ -42,11 +41,11 @@ public class GameEngine implements Observer {
 
 	@Override
 	public void update(Observed source) {
-
 		if (ImageGUI.getInstance().wasKeyPressed()) {
 			int k = ImageGUI.getInstance().keyPressed();
-			// 11/11 -->
 			switch(k) {
+				case KeyEvent.VK_R:
+					
 				case KeyEvent.VK_SPACE:
 					changeSelectedFish();
 					return;
@@ -57,27 +56,24 @@ public class GameEngine implements Observer {
 					break;
 				default:
 					return;
+			
 			}
 			if(!bigFishSelected) {
 				SmallFish.getInstance().move(Direction.directionFor(k).asVector());
 			} else {
 				BigFish.getInstance().move(Direction.directionFor(k).asVector());
 			}
-			// <-- 11/11
 		}
 		int t = ImageGUI.getInstance().getTicks();
 		while (lastTickProcessed < t) {
 			processTick();
-			for(GameObject obj : currentRoom.getObjects()) {
-				if(obj instanceof GravitationalGameObject gravObj) {
-					gravObj.fall();
-				}
-			}
+			currentRoom.applyGravity();
 		}
 		ImageGUI.getInstance().update();
+		
 	}
 
-	private void processTick() {		
+	private void processTick() {
 		lastTickProcessed++;
 	}
 
@@ -92,7 +88,4 @@ public class GameEngine implements Observer {
 	public void changeSelectedFish() {
 		this.bigFishSelected = !this.bigFishSelected;
 	}
-
-
-	
 }

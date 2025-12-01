@@ -1,8 +1,6 @@
 package objects;
 
 import pt.iscte.poo.game.Room;
-import pt.iscte.poo.utils.Point2D;
-import pt.iscte.poo.utils.Vector2D;
 
 public class Cup extends GravitationalGameObject {
 
@@ -25,11 +23,7 @@ public class Cup extends GravitationalGameObject {
         return true;
     } 
 
-	@Override
-	public boolean isHeavy() {
-		return false;
-	}
-
+	/*
 	@Override
 	public void fall() {
 		Vector2D dir = new Vector2D(0, 1);
@@ -43,6 +37,13 @@ public class Cup extends GravitationalGameObject {
 				setPosition(newPosition);
 			}
 		}
+	}
+	*/
+
+
+	@Override
+	public boolean isHeavy() {
+		return false;
 	}
 	
 	

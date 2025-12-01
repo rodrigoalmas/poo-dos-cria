@@ -1,16 +1,21 @@
 package objects;
 
 import pt.iscte.poo.game.Room;
+import pt.iscte.poo.utils.Point2D;
 
-public class Water extends GameObject{
+public class Blood extends GameObject{
 
-	public Water(Room room) {
+	public Blood(Room room) {
 		super(room);
 	}
 
+	public Blood(Point2D point, Room room) {
+        super(point, room);
+    }
+
 	@Override
 	public String getName() {
-		return "water";
+		return "blood";
 	}
 
 	@Override

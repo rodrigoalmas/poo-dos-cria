@@ -22,12 +22,9 @@ public class Stone extends GravitationalGameObject {
 	public boolean isSolid() {
         return true;
     }
-	
-	@Override
+
+    @Override
 	public boolean isHeavy() {
 		return true;
 	}
-    
-    
-
 }

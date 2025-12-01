@@ -3,13 +3,16 @@ package pt.iscte.poo.game;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 import objects.Water;
 import objects.Cup;
 import objects.holedWall;
 import objects.BigFish;
+import objects.GameCharacter;
 import objects.GameObject;
+import objects.GravitationalGameObject;
 import objects.Interact;
 import objects.SmallFish;
 import objects.Wall;
@@ -28,7 +31,7 @@ public class Room {
 	private Point2D bigFishStartingPosition;
 	
 	public Room() {
-		objects = new ArrayList<GameObject>();
+		objects = new ArrayList<>();
 	}
 
 	private void setName(String name) {
@@ -54,7 +57,7 @@ public class Room {
 	}
 	
 	public List<GameObject> getObjects() {
-		return objects;
+			return objects;
 	}
 
 	public void setSmallFishStartingPosition(Point2D heroStartingPosition) {
@@ -83,7 +86,7 @@ public class Room {
 		return lista;
 	}
 
-	public GameObject getObjectLayer(Point2D p, int layer) {
+	public GameObject getObjectByLayer(Point2D p, int layer) {
 		ArrayList<GameObject> objetos = getObjectsAt(p);
 		for(GameObject obj : objetos) {
 			if(obj.getLayer() == layer) {
@@ -96,38 +99,41 @@ public class Room {
 	public GameObject getNonWaterObjectAt(Point2D p) {
 		ArrayList<GameObject> objetos = getObjectsAt(p);
 		for(GameObject obj : objetos) {
-			if(obj.getLayer() != 1) {
+			if(obj.getLayer() != 0) {
 				return obj;
 			}
 		}
 		return null;
 	}
 
-	public Interact getInteractObjectAt(Point2D pos) {
+	public GravitationalGameObject getGravObjectAt(Point2D pos) {
 		for(GameObject obj : getObjectsAt(pos)) {
-			if(obj instanceof Interact interact) {
-				return interact;
+			if(obj instanceof GravitationalGameObject gravGameObject) {
+				return gravGameObject;
 			}
 		}
 		return null;
 	}
 
+	public GameObject getGameCharacter(Point2D pos) {
+		ArrayList<GameObject> lista = getObjectsAt(pos);
+		for(GameObject obj : lista) {
+			if(obj instanceof GameCharacter) return obj;
+		}
+		return null;
+	}
 	public boolean isValid(Point2D pos) {
-
-
 		for (GameObject obj : objects) {
 			if (obj.getPosition().equals(pos) && obj.isSolid())  {
 				return false;
 			}
 		}
-
-	
 		return true;
 	}
 
 	public void moveble(Point2D pos, Vector2D dir){
 		Point2D newPos = pos.plus(dir);
-		GameObject holedWall = getObjectLayer(newPos,7);
+		GameObject holedWall = getObjectByLayer(newPos,7);
 		for (GameObject obj : objects) {
 			if (obj.getPosition().equals(pos) && obj instanceof Interact){
 				if(obj.getLayer() >= 4 && dir.getY() != 0 && holedWall != null) {
@@ -141,8 +147,6 @@ public class Room {
 		
 	}
 
-
-	
 	public static Room readRoom(File f, GameEngine engine) {
 		Room r = new Room();
 		r.setEngine(engine);
@@ -226,5 +230,19 @@ public class Room {
 		return r;
 		
 	}
-	
+
+	public void applyGravity() {
+		List<GravitationalGameObject> gravObjects = new ArrayList<>();
+		for (GameObject obj : objects) {
+			if (obj instanceof GravitationalGameObject gravitationalGameObject) {
+				gravObjects.add(gravitationalGameObject);
+			}
+		}
+
+		for (int i = gravObjects.size() - 1; i >= 0 ; i--) {
+			if (!gravObjects.isEmpty()) {
+				gravObjects.get(i).fall();
+			}
+		}
+	}
 }

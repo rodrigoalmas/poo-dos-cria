@@ -17,7 +17,7 @@ public abstract class GameCharacter extends GameObject {
 
 		Point2D currentPosition = getPosition();
 		Point2D newPosition = currentPosition.plus(dir);
-		if(!(this instanceof BigFish && getRoom().getObjectLayer(newPosition, 7) != null )) {
+		if(!(this instanceof BigFish && getRoom().getObjectByLayer(newPosition, 7) != null )) {
 			getRoom().moveble(newPosition, dir);
 			if(getRoom().isValid(newPosition)){
 				setPosition(newPosition);
@@ -34,15 +34,6 @@ public abstract class GameCharacter extends GameObject {
 		return 2;
 	}
 
-	/*
-	public void remove() { //remover peixe da screen
-	}
-	 */
-
-	/*
-	public void kill() { //mata o peixe (remove da tela, adiciona a imagem de morto sangue e faz o pop up?)
-		this.remove
-	}
-	*/
+	
 	
 }

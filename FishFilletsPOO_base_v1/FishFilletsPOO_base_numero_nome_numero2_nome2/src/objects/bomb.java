@@ -23,14 +23,16 @@ public class Bomb extends GravitationalGameObject {
         return true;
     }
 
-	@Override
-	public boolean isHeavy(){
-		return false;
-	} 
-
+	/*
 	@Override
 	public void fall() {
 		
+	}
+	 */
+
+	@Override
+	public boolean isHeavy() {
+		return false;
 	}
 	
 

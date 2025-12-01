@@ -220,7 +220,7 @@ public class ImageGUI extends Observed {
      */
     public void go() {
         frame.setVisible(true);
-        System.out.println("Pai não é quem fode, é quem cria");
+        System.out.println("");
     }
 
     /**

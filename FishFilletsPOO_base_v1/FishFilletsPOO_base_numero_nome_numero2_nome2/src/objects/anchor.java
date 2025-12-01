@@ -2,7 +2,7 @@ package objects;
 
 import pt.iscte.poo.game.Room;
 
-public class Anchor extends Interact {
+public class Anchor extends GravitationalGameObject {
 
 	public Anchor(Room room) {
 		super(room);
@@ -27,6 +27,4 @@ public class Anchor extends Interact {
 	public boolean isHeavy() {
 		return true;
 	}
-    
-
 }

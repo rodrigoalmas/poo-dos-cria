@@ -49,7 +49,7 @@ public class BigFish extends GameCharacter {
 
 		Point2D currentPosition = getPosition();
 		Point2D newPosition = currentPosition.plus(dir);
-		if(getRoom().getObjectLayer(newPosition, 7) == null  && getRoom().getObjectLayer(newPosition, 1) == null) {
+		if(getRoom().getObjectByLayer(newPosition, 7) == null  && getRoom().getObjectByLayer(newPosition, 1) == null) {
 			getRoom().moveble(newPosition, dir);
 			if(getRoom().isValid(newPosition)){
 				setPosition(newPosition);

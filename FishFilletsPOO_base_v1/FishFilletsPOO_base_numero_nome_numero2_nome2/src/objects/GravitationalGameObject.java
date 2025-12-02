@@ -1,6 +1,7 @@
 package objects;
 
 import pt.iscte.poo.game.Room;
+import pt.iscte.poo.gui.ImageGUI;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
 
@@ -13,7 +14,7 @@ public abstract class GravitationalGameObject extends GameObject implements Inte
         super(point, room);
     }
 
-    public void fall() {
+    public boolean fall() {
 		Vector2D dir = new Vector2D(0, 1);
 		Point2D currentPosition = getPosition();
 		Point2D newPosition = currentPosition.plus(dir);
@@ -22,8 +23,9 @@ public abstract class GravitationalGameObject extends GameObject implements Inte
 			getRoom().removeObject(smallFish);
 			Blood blood = new Blood(bloodPosition, getRoom());
 			getRoom().addObject(blood);
+			
 			//setPosition(newPosition);
-			return;
+			return true;
 		}
 
 		if(gameCharacterBelow() instanceof BigFish bigFish) {
@@ -33,12 +35,13 @@ public abstract class GravitationalGameObject extends GameObject implements Inte
 				Blood blood = new Blood(bloodPosition, getRoom());
 				getRoom().addObject(blood);
 				//setPosition(newPosition);
-				return;
+				return true;
 			}
 		}
 		if(getRoom().getNonWaterObjectAt(newPosition) == null) {
 			setPosition(newPosition);
 		}
+		return false;
 	}
 
 	public boolean existsObjectAbove(Point2D pos) {

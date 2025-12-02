@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+import javax.swing.event.SwingPropertyChangeSupport;
 import objects.Water;
 import objects.Cup;
 import objects.holedWall;
@@ -19,6 +20,7 @@ import objects.Wall;
 import objects.SteelHorizontal;
 import objects.SteelVertical;
 import objects.Stone;
+import pt.iscte.poo.gui.ImageGUI;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
 
@@ -67,6 +69,14 @@ public class Room {
 	public Point2D getSmallFishStartingPosition() {
 		return smallFishStartingPosition;
 	}
+
+	public boolean smallFishOut() {
+		if(!objects.contains(SmallFish.getInstance())) {
+			return true;
+		}
+		Point2D pos = SmallFish.getInstance().getPosition();
+		return pos.getX() > 9 || pos.getX() < 0 || pos.getY() > 9 || pos.getY() < 0;
+	}
 	
 	public void setBigFishStartingPosition(Point2D heroStartingPosition) {
 		this.bigFishStartingPosition = heroStartingPosition;
@@ -74,6 +84,14 @@ public class Room {
 	
 	public Point2D getBigFishStartingPosition() {
 		return bigFishStartingPosition;
+	}
+
+	public boolean bigFishOut() {
+		if(!objects.contains(BigFish.getInstance())) {
+			return true;
+		}
+		Point2D pos = BigFish.getInstance().getPosition();
+		return pos.getX() > 9 || pos.getX() < 0 || pos.getY() > 9 || pos.getY() < 0;
 	}
 
 	public ArrayList<GameObject> getObjectsAt(Point2D p) {
@@ -168,12 +186,14 @@ public class Room {
 					if(c == 'B') {
 						GameObject bf = BigFish.getInstance();
 						bf.setPosition(new Point2D(col, line));
+						r.setBigFishStartingPosition(new Point2D(col, line));
 						r.addObject(bf);
 						
 					}
 					if(c == 'S') {
 						GameObject sf = SmallFish.getInstance();
 						sf.setPosition(new Point2D(col, line));
+						r.setSmallFishStartingPosition(new Point2D(col, line));
 						r.addObject(sf);
 						
 					}
@@ -231,7 +251,7 @@ public class Room {
 		
 	}
 
-	public void applyGravity() {
+	public boolean applyGravity() {
 		List<GravitationalGameObject> gravObjects = new ArrayList<>();
 		for (GameObject obj : objects) {
 			if (obj instanceof GravitationalGameObject gravitationalGameObject) {
@@ -241,8 +261,14 @@ public class Room {
 
 		for (int i = gravObjects.size() - 1; i >= 0 ; i--) {
 			if (!gravObjects.isEmpty()) {
-				gravObjects.get(i).fall();
+				if(gravObjects.get(i).fall()) {
+					gravObjects.get(i).fall();
+					return true;
+				}
 			}
 		}
+		return false;
 	}
+
+	
 }

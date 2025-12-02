@@ -1,6 +1,7 @@
 package objects;
 
 import pt.iscte.poo.game.Room;
+import pt.iscte.poo.gui.ImageGUI;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
 
@@ -37,7 +38,12 @@ public class SmallFish extends GameCharacter {
         return true;
     }
 
+	@Override
+	public void die() {
+		getRoom().removeObject(this);
+	}
 
+	/*
 	@Override
 	public void move(Vector2D dir) {
 		Vector2D left = new Vector2D(-1, 0);
@@ -57,6 +63,7 @@ public class SmallFish extends GameCharacter {
 		if(dir.equals(right))
 			this.direction = "right";
 	}	
+	 */
 
 	
 	

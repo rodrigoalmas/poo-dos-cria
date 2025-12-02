@@ -23,6 +23,10 @@ public abstract class GameCharacter extends GameObject {
 				setPosition(newPosition);
 			}
 		}
+		if(getRoom().bigFishOut() && this instanceof BigFish) BigFish.getInstance().die();
+		if(getRoom().smallFishOut() && this instanceof SmallFish) SmallFish.getInstance().die();
+
+
 		if(dir.equals(left))
 			this.direction = "left";
 		if(dir.equals(right))
@@ -33,6 +37,8 @@ public abstract class GameCharacter extends GameObject {
 	public int getLayer() {
 		return 2;
 	}
+
+	public abstract void die();
 
 	
 	
